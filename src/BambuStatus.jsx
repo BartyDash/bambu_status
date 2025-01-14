@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import bambu_lab_logo from './assets/bambu_lab_logo.svg';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA03zo5ibk8qwO8d3Xt9N_VPbzruxlUH0g",
@@ -53,7 +54,8 @@ const BambuStatus = () => {
   }
 
   return (
-    <div>
+    <div className='font-orbitron font-semibold text-xl'>
+      <img src={bambu_lab_logo} alt="Bambu Lab logo" />
       <p>Docelowa temperatura stołu: {data.bedTargetTemper}°C</p>
       <p>Temperatura stołu: {data.bedTemper}°C</p>
       <p>Temperatura komory: {data.chamberTemper}°C</p>
