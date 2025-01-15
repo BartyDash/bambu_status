@@ -1,13 +1,3 @@
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
- } from 'chart.js/auto'
 import TemperatureChart from './TemperatureChart'
 import BambuStats from './BambuStatus';
 

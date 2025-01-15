@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, query, orderByChild, startAt, onValue } from 'firebase/database';
 import {
-  LineChart,
+  AreaChart,
+  Area,
   Line,
   XAxis,
   YAxis,
@@ -135,7 +136,7 @@ const TemperatureChart = () => {
     if (active && payload && payload.length) {
       const dataPoint = payload[0].payload;
       return (
-        <div className="bg-white p-4 border border-gray-200 rounded shadow">
+        <div className="bg-zinc-800 p-4 border border-gray-200 rounded shadow">
           <p className="text-gray-600">{label}</p>
           {payload.map((item, index) => (
             <p key={index} style={{ color: item.color }}>
@@ -157,63 +158,81 @@ const TemperatureChart = () => {
   }
 
   return (
-    <div className="w-full h-[500px] p-4">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
+    <div className="w-screen h-80">
+      <ResponsiveContainer width="100%" height="80%">
+        <AreaChart
           data={displayData}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 70
-          }}
+          // margin={{
+          //   top: 20,
+          //   right: 30,
+          //   left: 20,
+          //   bottom: 70
+          // }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+          {/* <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" /> */}
           <XAxis
             dataKey="formattedTime"
-            angle={-45}
-            textAnchor="end"
+            // angle={-45}
+            textAnchor="middle"
             height={70}
             tick={{ fontSize: 12 }}
-            interval={Math.ceil(displayData.length / 12)} // Około 12 etykiet na osi X
+            interval={Math.ceil(displayData.length / 8)} // Około 12 etykiet na osi X
           />
           <YAxis
-            label={{ 
-              value: 'Temperatura (°C)',
-              angle: -90,
-              position: 'insideLeft'
-            }}
+          width={30}
+          axisLine={false}
+            // label={{ 
+            //   value: 'Temperatura (°C)',
+            //   angle: -90,
+            //   position: 'middle',
+            // }}
           />
           <Tooltip content={<CustomTooltip />} />
-          <Legend verticalAlign="top" height={36} />
-          <Line
-            name="Temperatura łóżka"
-            type="bump"
+          <defs>
+            <linearGradient id="colorBed" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorNozzle" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#11c11d" stopOpacity={0.6}/>
+              <stop offset="95%" stopColor="#11c11d" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
+          {/* <Legend verticalAlign="bottom" height={36} align='left'/> */}
+          <Area
+            name="Bed temp."
+            type="monotone"
             dataKey="bedTemper"
-            stroke="#ff5757"
+            stroke="#8884d8"
             dot={false}
-            strokeWidth={2}
+            strokeWidth={1}
+            fillOpacity={1}
+            fill='url(#colorBed)'
             isAnimationActive={false}
           />
-          <Line
-            name="Temperatura komory"
-            type="bump"
+          <Area
+            name="Chamber temp."
+            type="monotone"
             dataKey="chamberTemper"
             stroke="#2196f3"
             dot={false}
-            strokeWidth={2}
+            strokeWidth={1}
+            fillOpacity={1}
+            fill='url(#colorChamber)'
             isAnimationActive={false}
           />
-          <Line
-            name="Temperatura dyszy"
-            type="bump"
+          <Area
+            name="Nozzle temp."
+            type="monotone"
             dataKey="nozzleTemper"
-            stroke="#4caf50"
+            stroke="#11c11d"
             dot={false}
-            strokeWidth={2}
+            strokeWidth={1}
+            fillOpacity={1}
+            fill='url(#colorNozzle)'
             isAnimationActive={false}
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
