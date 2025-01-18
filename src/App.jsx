@@ -1,5 +1,6 @@
 import TemperatureChart from './TemperatureChart'
 import BambuStats from './BambuStatus';
+import bambu_text from './assets/bambu_text.svg';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -13,7 +14,8 @@ const firebaseConfig = {
 
 function App() {
   return (
-    <div className='bg-zinc-800 text-white min-h-screen'>
+    <div className='bg-zinc-800 text-white h-screen flex flex-col items-center font-orbitron font-semibold'>
+      <h1 className='flex items-center justify-center text-[28px] tracking-widest'><img className='mr-3.5 mb-[3px]' src={bambu_text} alt="bambu" /><p>status</p></h1>
       <BambuStats />
       <TemperatureChart />
     </div>
