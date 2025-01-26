@@ -16,8 +16,11 @@ function App() {
   return (
     <div className='bg-zinc-800 text-white h-screen flex flex-col items-center font-orbitron font-semibold'>
       <h1 className='flex items-center justify-center text-[28px] tracking-widest'><img className='mr-3.5 mb-[3px]' src={bambu_text} alt="bambu" /><p>status</p></h1>
-      <BambuStats />
-      <TemperatureChart />
+      <div className='w-full h-full flex flex-col justify-center items-center'>
+        <BambuStats />
+      </div>
+      
+      {/* <TemperatureChart /> */}
     </div>
   )
 }

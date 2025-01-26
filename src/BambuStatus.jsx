@@ -54,9 +54,12 @@ const BambuStatus = () => {
   }
 
   return (
-    <div className='text-xl bg-[url("./assets/bambu_lab_logo_gradient.svg")] bg-'>
+    <div className='text-xl w-full'>
+      <div className='flex justify-center'>
+        <img src={bambu_lab_logo} alt="" />
+      </div>
       {/* <img src={bambu_lab_logo} alt="Bambu Lab logo" /> */}
-      <p>Docelowa temperatura stołu: {data.bedTargetTemper}°C</p>
+      {/* <p>Docelowa temperatura stołu: {data.bedTargetTemper}°C</p>
       <p>Temperatura stołu: {data.bedTemper}°C</p>
       <p>Temperatura komory: {data.chamberTemper}°C</p>
       <p>Kod błędu: {data.failReason}</p>
@@ -67,7 +70,7 @@ const BambuStatus = () => {
       <p>Docelowa temperatura dyszy: {data.nozzleTargetTemper}°C</p>
       <p>Temperatura dyszy: {data.nozzleTemper}°C</p>
       <p>Błąd drukowania: {data.printError}</p>
-      <p>Nazwa zadania: {data.subtask_name}</p>
+      <p>Nazwa zadania: {data.subtask_name}</p> */}
     </div>
   );
 };
