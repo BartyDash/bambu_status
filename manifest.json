@@ -8,8 +8,6 @@
   "scope": "/",
   "start_url": "/",
   "icons": [
-      { "src": "src/assets/icons/16x16.png", "sizes": "16x16", "type": "image/png" },
-      { "src": "src/assets/icons/32x32.png", "sizes": "32x32", "type": "image/png" },
       { "src": "src/assets/icons/72x72.png", "sizes": "72x72", "type": "image/png" },
       { "src": "src/assets/icons/96x96.png", "sizes": "96x96", "type": "image/png" },
       { "src": "src/assets/icons/120x120.png", "sizes": "120x120", "type": "image/png" },
