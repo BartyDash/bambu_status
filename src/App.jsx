@@ -13,6 +13,7 @@ const firebaseConfig = {
 };
 
 function App() {
+  window.scrollTo(0,1);
   return (
     <div className='bg-zinc-800 text-white h-screen flex flex-col items-center font-orbitron font-bold'>
       <div className='w-full h-full flex flex-col items-center'>
