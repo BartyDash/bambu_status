@@ -158,7 +158,7 @@ const TemperatureChart = () => {
   }
 
   return (
-    <div className="w-screen h-36 absolute bottom-0 flex justify-end items-end">
+    <div className="w-screen h-full flex justify-end items-end">
       <ResponsiveContainer width="100%" height="80%">
         <AreaChart
           data={displayData}
