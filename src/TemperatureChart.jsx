@@ -158,7 +158,7 @@ const TemperatureChart = () => {
   }
 
   return (
-    <div className="w-screen h-80 absolute bottom-0">
+    <div className="w-screen h-30 absolute bottom-0">
       <ResponsiveContainer width="100%" height="80%">
         <AreaChart
           data={displayData}
@@ -174,12 +174,13 @@ const TemperatureChart = () => {
             dataKey="formattedTime"
             // angle={-45}
             textAnchor="middle"
-            height={70}
+            height={14}
             tick={{ fontSize: 12 }}
-            interval={Math.ceil(displayData.length / 8)} // Około 12 etykiet na osi X
+            interval={Math.ceil(displayData.length / 6)} // Około 12 etykiet na osi X
           />
           <YAxis
-          width={45}
+          width={35}
+          tick={{ fontSize: 12 }}
           axisLine={false}
             // label={{ 
             //   value: 'Temperatura (°C)',
