@@ -136,7 +136,7 @@ const TemperatureChart = () => {
     if (active && payload && payload.length) {
       const dataPoint = payload[0].payload;
       return (
-        <div className="bg-zinc-800 p-4 border border-gray-200 rounded shadow">
+        <div className="bg-zinc-800 p-1 border border-gray-200 rounded shadow">
           <p className="text-gray-600">{label}</p>
           {payload.map((item, index) => (
             <p key={index} style={{ color: item.color }}>
@@ -158,7 +158,7 @@ const TemperatureChart = () => {
   }
 
   return (
-    <div className="w-screen h-30 absolute bottom-0">
+    <div className="w-screen h-36 absolute bottom-0 flex justify-end items-end">
       <ResponsiveContainer width="100%" height="80%">
         <AreaChart
           data={displayData}
@@ -174,7 +174,7 @@ const TemperatureChart = () => {
             dataKey="formattedTime"
             // angle={-45}
             textAnchor="middle"
-            height={14}
+            height={15}
             tick={{ fontSize: 12 }}
             interval={Math.ceil(displayData.length / 6)} // Około 12 etykiet na osi X
           />
@@ -191,20 +191,35 @@ const TemperatureChart = () => {
           <Tooltip content={<CustomTooltip />} />
           <defs>
             <linearGradient id="colorBed" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#D9D9D9" stopOpacity={0.6}/>
+              <stop offset="95%" stopColor="#D9D9D9" stopOpacity={0}/>
             </linearGradient>
             <linearGradient id="colorNozzle" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#11c11d" stopOpacity={0.6}/>
-              <stop offset="95%" stopColor="#11c11d" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#00AE41" stopOpacity={0.6}/>
+              <stop offset="95%" stopColor="#00AE41" stopOpacity={0}/>
             </linearGradient>
+            {/* <linearGradient id="colorChamber" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#FFBE31" stopOpacity={0.6}/>
+              <stop offset="95%" stopColor="#FFBE31" stopOpacity={0}/>
+            </linearGradient> */}
           </defs>
           {/* <Legend verticalAlign="bottom" height={36} align='left'/> */}
+          <Area
+            name="Nozzle temp."
+            type="monotone"
+            dataKey="nozzleTemper"
+            stroke="#00AE41"
+            dot={false}
+            strokeWidth={1}
+            fillOpacity={1}
+            fill='url(#colorNozzle)'
+            isAnimationActive={false}
+          />
           <Area
             name="Bed temp."
             type="monotone"
             dataKey="bedTemper"
-            stroke="#8884d8"
+            stroke="#D9D9D9"
             dot={false}
             strokeWidth={1}
             fillOpacity={1}
@@ -215,22 +230,11 @@ const TemperatureChart = () => {
             name="Chamber temp."
             type="monotone"
             dataKey="chamberTemper"
-            stroke="#2196f3"
+            stroke="#FFBE31"
             dot={false}
             strokeWidth={1}
             fillOpacity={1}
             fill='url(#colorChamber)'
-            isAnimationActive={false}
-          />
-          <Area
-            name="Nozzle temp."
-            type="monotone"
-            dataKey="nozzleTemper"
-            stroke="#11c11d"
-            dot={false}
-            strokeWidth={1}
-            fillOpacity={1}
-            fill='url(#colorNozzle)'
             isAnimationActive={false}
           />
         </AreaChart>
