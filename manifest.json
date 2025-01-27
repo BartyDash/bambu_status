@@ -1,0 +1,16 @@
+{
+    "name": "Bambu status",
+    "short_name": "BambuStat",
+    "start_url": "https://bambu-status.netlify.app/",
+    "display": "standalone",
+    "theme_color": "#17171B",
+    "background_color": "#242328",
+    "icons": [
+      {
+        "src": "/bamboo.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      }
+    ]
+  }
+  
